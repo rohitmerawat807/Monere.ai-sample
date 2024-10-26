@@ -180,6 +180,7 @@ export default function CameraScreen() {
                 Alert.alert("Camera Error", "Invalid camera device");
                 break
             default:
+                Alert.alert("Camera Error", "Some error appeared");
                 break
         }
     }, [])
@@ -239,8 +240,7 @@ export default function CameraScreen() {
         <SafeScreen
             isError={false}
             onResetError={() => { }}
-            style={styles.container}
-        >
+            style={styles.container}>
             {!showPreview ? <Camera
                 audio={true}
                 device={realDevice}
@@ -254,18 +254,17 @@ export default function CameraScreen() {
                 outputOrientation="device"
                 photo={true}
                 photoHdr={format.supportsPhotoHdr}
-                photoQualityBalance="quality"
+                photoQualityBalance="speed"
                 ref={cameraRef}
                 style={StyleSheet.absoluteFill}
                 video={true}
                 videoHdr={format.supportsVideoHdr}
-                zoom={zoomLevel}
+                zoom={zoomLevel} 
             /> : null}
             {isCameraInitialized && !showPreview ? renderHorizontalActionButtons() : null}
             {isCameraInitialized && !showPreview ? renderVerticalActionButtons() : null}
             {showPreview ? renderImagePreview() : null}
         </SafeScreen>
-
     )
 }
 //UI Area Ended
