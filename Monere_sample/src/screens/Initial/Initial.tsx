@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable unicorn/consistent-function-scoping */
 import { Linking, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useTheme } from '@/theme';
@@ -5,13 +6,27 @@ import { SafeScreen } from '@/components/templates';
 import { FontSize } from '@/styles/typography';
 import Spacing from '@/styles/spacing';
 import AppColors from '@/styles/colors';
+import { useNavigation } from '@react-navigation/native';
+import { Paths } from '@/navigation/paths';
+import { useMicrophonePermission } from 'react-native-vision-camera';
+import { useEffect } from 'react';
 
-function Example() {
+function Initial() {
 
   const { layout, gutters } = useTheme();
+  const navigation: any = useNavigation();
+  const { requestPermission } = useMicrophonePermission();
+
+  useEffect(() => {
+    requestPermission();
+  }, [])
 
   const onActionAbout = () => {
     Linking.openURL("https://www.monere.ai/");
+  }
+
+  const navigateToCamera = () => {
+    navigation.navigate(Paths.CameraScreen);
   }
 
   return (
@@ -35,15 +50,17 @@ function Example() {
         <Text>About Monere.ai</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={[styles.buttonStyle,
-      styles.additionalButtonStyle]}>
+      <TouchableOpacity
+        onPress={() => { navigateToCamera() }}
+        style={[styles.buttonStyle,
+        styles.additionalButtonStyle]}>
         <Text>Use Sample Camera</Text>
       </TouchableOpacity>
     </SafeScreen>
   );
 }
 
-export default Example;
+export default Initial;
 
 const styles = StyleSheet.create({
   container: {

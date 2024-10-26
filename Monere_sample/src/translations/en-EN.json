@@ -14,6 +14,15 @@
       "title": "Oops! Something went wrong.",
       "description": "We are sorry for the inconvenience. Please try again later.",
       "cta": "Reload the screen"
+    },
+    "cameraScreen": {
+      "notConfigured": "Camera Configuration error",
+      "noPermission": "Camera permission is not granted",
+      "cameraError": "Camera Error",
+      "invalidcamera": "Invalid camera device",
+      "noFlashError": "This device doesn't have flash",
+      "noHDRError": "This device doesn't support HDR",
+      "noNightMode": "Night mode not available"
     }
   }
 }

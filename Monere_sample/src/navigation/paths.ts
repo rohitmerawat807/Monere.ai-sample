@@ -1,4 +1,5 @@
 export const enum Paths {
-  Example = 'example',
-  Startup = 'startup',
+  CameraScreen = 'cameraScreen',
+  Initial = 'initial',
+  VideoScreen = 'videoScreen'
 }
